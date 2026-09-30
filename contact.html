@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 bg-white p-5 rounded-3 shadow-sm border">
+        <h2 class="mb-4 text-center text-primary fw-bold">Task 2: Form Handling</h2>
+
+        <!-- If Form successfully submitted (POST Request) -->
+        {% if success %}
+            <div class="alert alert-success text-center py-4" role="alert">
+                <h4 class="alert-heading fw-bold">Thank You, {{ name }}!</h4>
+                <p class="mb-0">Your data has successfully reached the Flask backend via a POST request.</p>
+            </div>
+            <a href="/contact" class="btn btn-outline-secondary w-100 mt-2">Fill Form Again</a>
+        {% else %}
+            <!-- Actual Form -->
+            <form action="/contact" method="POST">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Your Name:</label>
+                    <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email Address:</label>
+                    <input type="email" name="email" class="form-control" placeholder="name@example.com" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Your Message:</label>
+                    <textarea name="message" class="form-control" rows="4" placeholder="Type your message here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Submit Form (Send POST Request)</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

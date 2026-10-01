@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="bg-white p-5 rounded-3 shadow-sm border">
+    <h2 class="mb-4 text-primary fw-bold">Task 3 Dashboard: Saved Database Messages</h2>
+    <p class="text-muted">The list below showcases real-time entries retrieved directly from the SQLite database repository.</p>
+    
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email Address</th>
+                    <th>Submitted Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for msg in messages %}
+                <tr>
+                    <td>{{ msg[0] }}</td>
+                    <td class="fw-bold">{{ msg[1] }}</td>
+                    <td>{{ msg[2] }}</td>
+                    <td>{{ msg[3] }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted py-4">No records found inside the database yet. Fill out the contact form first!</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="mt-4">
+        <a href="/" class="btn btn-outline-secondary">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

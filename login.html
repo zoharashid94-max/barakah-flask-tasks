@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-4 bg-white p-5 rounded-3 shadow-sm border">
+        <h2 class="mb-4 text-center text-secondary fw-bold">User Login</h2>
+        
+        <!-- Flash messages for failed login attempts -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} text-center py-2">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="/login" method="POST">
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Username:</label>
+                <input type="text" name="username" class="form-control" placeholder="zoha" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Password:</label>
+                <input type="password" name="password" class="form-control" placeholder="scholarship2026" required>
+            </div>
+            <button type="submit" class="btn btn-secondary w-100 py-2 fw-bold">Login</button>
+        </form>
+        <p class="text-muted small text-center mt-3">Demo account username: <b>zoha</b> | password: <b>scholarship2026</b></p>
+    </div>
+</div>
+{% endblock %}

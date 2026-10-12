@@ -1,0 +1,358 @@
+
+{% extends "layout.html" %}
+
+{% block title %}Contact Us | Barakah Connect{% endblock %}
+
+{% block extra_css %}
+.contact-hero {
+    background: var(--navy);
+    color: white;
+    padding: 55px 0 95px;
+    text-align: center;
+}
+
+.contact-hero .section-label {
+    margin-bottom: 17px;
+}
+
+.contact-hero h1 {
+    font-family: "Manrope", sans-serif;
+    font-size: clamp(36px, 5vw, 52px);
+    letter-spacing: -1.8px;
+    line-height: 1.2;
+    margin-bottom: 17px;
+}
+
+.contact-hero h1 span {
+    color: var(--teal);
+}
+
+.contact-hero p {
+    max-width: 580px;
+    margin: auto;
+    color: #b8c3d5;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.contact-wrapper {
+    padding-bottom: 75px;
+    margin-top: -48px;
+    position: relative;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.contact-info {
+    padding: 30px;
+    border-radius: 19px;
+    color: white;
+    background: linear-gradient(145deg, #14243a, #0b1220);
+    box-shadow: 0 18px 45px rgba(11,18,32,.13);
+}
+
+.contact-info h2 {
+    font-family: "Manrope", sans-serif;
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.contact-info > p {
+    color: #b7c3d5;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 30px;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin: 23px 0;
+}
+
+.info-icon {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(37,208,177,.12);
+    color: var(--teal);
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+.info-item strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.info-item span {
+    color: #b7c3d5;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.contact-note {
+    margin-top: 30px;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.1);
+    color: #c1ccdc;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.contact-form-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 19px;
+    padding: 34px;
+    box-shadow: 0 18px 50px rgba(20,40,70,.07);
+}
+
+.form-heading {
+    margin-bottom: 25px;
+}
+
+.form-heading h2 {
+    font-family: "Manrope", sans-serif;
+    font-size: 25px;
+    letter-spacing: -.7px;
+    margin-bottom: 7px;
+}
+
+.form-heading p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    margin-bottom: 19px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    display: block;
+    width: 100%;
+    border: 1px solid #dce4ee;
+    border-radius: 10px;
+    padding: 13px 14px;
+    background: #fbfcfe;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--teal-dark);
+    box-shadow: 0 0 0 3px rgba(37,208,177,.13);
+    background: white;
+}
+
+.form-group textarea {
+    min-height: 145px;
+    resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9aa6b7;
+}
+
+.form-submit {
+    width: 100%;
+    border: 0;
+    font-size: 14px;
+}
+
+.form-help {
+    margin-top: 13px;
+    color: var(--muted);
+    text-align: center;
+    font-size: 11px;
+}
+
+@media (max-width: 760px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-hero {
+        padding: 45px 0 75px;
+    }
+
+    .contact-info {
+        order: 2;
+    }
+
+    .contact-form-card {
+        order: 1;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .contact-info {
+        padding: 24px;
+    }
+}
+{% endblock %}
+
+{% block content %}
+
+<section class="contact-hero">
+    <div class="container">
+        <div class="section-label">✦ Get in touch</div>
+
+        <h1>Let's start a <span>conversation.</span></h1>
+
+        <p>
+            Have a question, idea, or suggestion? Send us a message.
+            Fill out the form below and share what's on your mind.
+        </p>
+    </div>
+</section>
+
+<section class="contact-wrapper">
+    <div class="container contact-grid">
+
+        <aside class="contact-info">
+            <h2>We'd love to hear from you.</h2>
+
+            <p>
+                Your feedback helps make the experience better.
+                Use the contact form to share your message with us.
+            </p>
+
+            <div class="info-item">
+                <div class="info-icon" aria-hidden="true">✉</div>
+                <div>
+                    <strong>Send a message</strong>
+                    <span>Use the form to share your question or feedback.</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon" aria-hidden="true">◷</div>
+                <div>
+                    <strong>Clear communication</strong>
+                    <span>Provide the details needed to understand your message.</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon" aria-hidden="true">◇</div>
+                <div>
+                    <strong>Simple experience</strong>
+                    <span>A clean and straightforward way to get in touch.</span>
+                </div>
+            </div>
+
+            <div class="contact-note">
+                <strong>Before submitting</strong><br>
+                Please check your details and make sure your message
+                does not include passwords or other sensitive information.
+            </div>
+        </aside>
+
+        <div class="contact-form-card">
+            <div class="form-heading">
+                <h2>Send us a message</h2>
+                <p>Complete the fields below to get started.</p>
+            </div>
+
+            <form action="{{ url_for('contact') }}" method="POST">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full name *</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Your full name"
+                            autocomplete="name"
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email address *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            maxlength="254"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="What is your message about?"
+                        maxlength="150"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your message *</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Write your message here..."
+                        maxlength="5000"
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary form-submit">
+                    Send Message <span aria-hidden="true">→</span>
+                </button>
+
+                <p class="form-help">
+                    Fields marked with * are required.
+                </p>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

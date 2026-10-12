@@ -1,0 +1,379 @@
+{% extends 'layout.html' %}
+
+{% block title %}Messages Dashboard | Barakah Connect{% endblock %}
+
+{% block extra_css %}
+.messages-section {
+    min-height: 75vh;
+    padding: 55px 20px 70px;
+    background:
+        radial-gradient(circle at 10% 5%, rgba(37,208,177,.06), transparent 30%),
+        var(--bg);
+}
+
+.messages-container {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.messages-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.messages-heading h1 {
+    font-family: "Manrope", sans-serif;
+    font-size: clamp(27px, 4vw, 36px);
+    letter-spacing: -1px;
+    color: var(--navy);
+    margin: 10px 0 6px;
+}
+
+.messages-heading p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.dashboard-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--teal-dark);
+    background: rgba(37,208,177,.12);
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.dashboard-label::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: var(--teal);
+    border-radius: 50%;
+}
+
+.messages-count {
+    min-width: 150px;
+    padding: 18px 24px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(11, 18, 32, 0.03);
+}
+
+.messages-count span {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.messages-count strong {
+    font-family: "Manrope", sans-serif;
+    font-size: 32px;
+    color: var(--navy);
+    line-height: 1.2;
+}
+
+.messages-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(11, 18, 32, 0.04);
+}
+
+.messages-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border);
+}
+
+.messages-card-header h2 {
+    font-family: "Manrope", sans-serif;
+    font-size: 18px;
+    color: var(--navy);
+    margin: 0 0 4px;
+}
+
+.messages-card-header p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+}
+
+.database-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--teal-dark);
+    background: #eafaf5;
+    border-radius: 30px;
+    padding: 8px 14px;
+}
+
+.database-status span {
+    width: 6px;
+    height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+}
+
+.messages-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.messages-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.messages-table thead {
+    background: #f8fafc;
+}
+
+.messages-table th {
+    padding: 16px 24px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--border);
+}
+
+.messages-table td {
+    padding: 20px 24px;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+}
+
+.messages-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.messages-table tbody tr {
+    transition: background .2s ease;
+}
+
+.messages-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.message-id {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 32px;
+    padding: 0 8px;
+    border-radius: 8px;
+    color: var(--navy-light);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.message-name {
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.message-email {
+    color: var(--teal-dark) !important;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.message-content {
+    min-width: 200px;
+    max-width: 420px;
+    color: var(--text);
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.messages-empty {
+    padding: 70px 20px !important;
+    text-align: center;
+}
+
+.empty-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    background: var(--bg);
+    color: var(--muted);
+    font-size: 26px;
+    border: 1px solid var(--border);
+}
+
+.messages-empty strong {
+    display: block;
+    font-size: 16px;
+    color: var(--navy);
+    margin-bottom: 6px;
+}
+
+.messages-empty p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0;
+}
+
+.messages-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 24px 28px;
+    background: #fdfefe;
+    border-top: 1px solid var(--border);
+}
+
+.messages-footer p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0;
+}
+
+.messages-footer .btn {
+    padding: 10px 20px;
+    font-size: 13px;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .messages-section {
+        padding: 35px 15px 50px;
+    }
+
+    .messages-heading {
+        gap: 16px;
+    }
+
+    .messages-count {
+        width: 100%;
+    }
+
+    .messages-card-header {
+        padding: 20px 24px;
+    }
+
+    .messages-table th,
+    .messages-table td {
+        padding: 16px 20px;
+    }
+
+    .messages-footer {
+        padding: 20px 24px;
+    }
+}
+{% endblock %}
+
+{% block content %}
+<section class="messages-section">
+    <div class="messages-container">
+
+        <div class="messages-heading">
+            <div>
+                <div class="dashboard-label">Admin Dashboard</div>
+                <h1>Messages Overview</h1>
+                <p>
+                    View and manage contact messages stored in the
+                    Barakah Connect database.
+                </p>
+            </div>
+
+            <div class="messages-count">
+                <span>Total Messages</span>
+                <strong>{{ messages|length }}</strong>
+            </div>
+        </div>
+
+        <div class="messages-card">
+            <div class="messages-card-header">
+                <div>
+                    <h2>Contact Submissions</h2>
+                    <p>Messages retrieved from the SQLite database</p>
+                </div>
+
+                <div class="database-status">
+                    <span></span>
+                    Connected
+                </div>
+            </div>
+
+            <div class="messages-table-wrap">
+                <table class="messages-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email Address</th>
+                            <th>Submitted Message</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for msg in messages %}
+                        <tr>
+                            <td>
+                                <span class="message-id">{{ msg[0] }}</span>
+                            </td>
+                            <td class="message-name">{{ msg[1] }}</td>
+                            <td class="message-email">{{ msg[2] }}</td>
+                            <td class="message-content">{{ msg[3] }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="4" class="messages-empty">
+                                <div class="empty-icon" aria-hidden="true">✉</div>
+                                <strong>No messages yet</strong>
+                                <p>New contact form submissions will appear here.</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="messages-footer">
+                <p>Barakah Connect · Admin Panel</p>
+                <a href="/" class="btn btn-primary">
+                    ← Back to Home
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

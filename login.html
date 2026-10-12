@@ -1,0 +1,356 @@
+{% extends "layout.html" %}
+
+{% block title %}Admin Login | Barakah Connect{% endblock %}
+
+{% block extra_css %}
+.login-section {
+    min-height: 76vh;
+    padding: 65px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(37,208,177,.08), transparent 35%),
+        radial-gradient(circle at 85% 85%, rgba(17,28,48,.05), transparent 35%),
+        var(--bg);
+}
+
+.login-layout {
+    width: 100%;
+    max-width: 940px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(11, 18, 32, 0.05);
+}
+
+.login-welcome {
+    background: linear-gradient(135deg, #111c30, #0b1220);
+    color: white;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-welcome::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    right: -100px;
+    bottom: -100px;
+    border: 1px solid rgba(37,208,177,.18);
+    border-radius: 50%;
+    box-shadow: 0 0 0 30px rgba(37,208,177,.03),
+                0 0 0 60px rgba(37,208,177,.01);
+    pointer-events: none;
+}
+
+.login-brand-icon {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: var(--teal);
+    color: var(--navy);
+    font-family: "Manrope", sans-serif;
+    font-size: 27px;
+    font-weight: 800;
+    margin-bottom: 32px;
+}
+
+.login-welcome h1 {
+    font-family: "Manrope", sans-serif;
+    font-size: clamp(28px, 3vw, 36px);
+    line-height: 1.25;
+    letter-spacing: -1px;
+    margin-bottom: 18px;
+}
+
+.login-welcome h1 span {
+    color: var(--teal);
+}
+
+.login-welcome > p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #aebccf;
+    max-width: 340px;
+}
+
+.login-benefits {
+    margin-top: 36px;
+    display: grid;
+    gap: 16px;
+}
+
+.login-benefit {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #d6deea;
+    font-size: 13px;
+}
+
+.login-benefit span {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(37,208,177,.12);
+    color: var(--teal);
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.login-form-panel {
+    padding: 50px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.login-form-heading {
+    margin-bottom: 30px;
+}
+
+.login-form-heading .section-label {
+    margin-bottom: 16px;
+    font-size: 10px;
+}
+
+.login-form-heading h2 {
+    font-family: "Manrope", sans-serif;
+    font-size: 28px;
+    letter-spacing: -1px;
+    color: var(--navy);
+    margin-bottom: 8px;
+}
+
+.login-form-heading p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.login-field {
+    margin-bottom: 22px;
+}
+
+.login-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy-light);
+    margin-bottom: 8px;
+}
+
+.login-input-wrap {
+    position: relative;
+}
+
+.login-field input {
+    display: block;
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    color: var(--text);
+    background: #f8fafc;
+    font-size: 14px;
+    transition: all .2s ease;
+}
+
+.login-field input:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 4px rgba(37,208,177,.12);
+    background: white;
+}
+
+.password-input {
+    padding-right: 75px !important;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 0;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color .2s;
+}
+
+.password-toggle:hover {
+    color: var(--navy);
+}
+
+.login-submit {
+    width: 100%;
+    min-height: 50px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 12px;
+}
+
+.login-back {
+    margin-top: 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.login-back a {
+    color: var(--navy-light);
+    font-weight: 700;
+    transition: color .2s;
+}
+
+.login-back a:hover {
+    color: var(--teal-dark);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .login-section {
+        padding: 35px 15px;
+    }
+
+    .login-layout {
+        max-width: 480px;
+        grid-template-columns: 1fr;
+    }
+
+    .login-welcome {
+        padding: 35px 30px;
+    }
+
+    .login-benefits {
+        margin-top: 24px;
+    }
+
+    .login-form-panel {
+        padding: 35px 30px;
+    }
+}
+{% endblock %}
+
+{% block content %}
+
+<section class="login-section">
+    <div class="login-layout">
+
+        <div class="login-welcome">
+            <div class="login-brand-icon" aria-hidden="true">B.</div>
+
+            <h1>Welcome back to <span>Barakah.</span></h1>
+
+            <p>
+                Access the administration area to review and manage
+                messages submitted through Barakah Connect.
+            </p>
+
+            <div class="login-benefits">
+                <div class="login-benefit">
+                    <span aria-hidden="true">✓</span>
+                    <div>Organized message management</div>
+                </div>
+
+                <div class="login-benefit">
+                    <span aria-hidden="true">✓</span>
+                    <div>A simple administration interface</div>
+                </div>
+
+                <div class="login-benefit">
+                    <span aria-hidden="true">✓</span>
+                    <div>Secure access for authorized users</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-form-panel">
+            <div class="login-form-heading">
+                <div class="section-label">Admin portal</div>
+                <h2>Sign in</h2>
+                <p>Enter your authorized account details to continue.</p>
+            </div>
+
+            <form method="POST" action="{{ url_for('login') }}">
+                <div class="login-field">
+                    <label for="username">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="login-field">
+                    <label for="password">Password</label>
+
+                    <div class="login-input-wrap">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="password-input"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="togglePassword"
+                            aria-controls="password"
+                            aria-pressed="false"
+                        >Show</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary login-submit">
+                    Sign In <span aria-hidden="true">→</span>
+                </button>
+            </form>
+
+            <div class="login-back">
+                <a href="/">← Back to home</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    const passwordInput = document.getElementById("password");
+    const toggleButton = document.getElementById("togglePassword");
+
+    toggleButton.addEventListener("click", function () {
+        const isHidden = passwordInput.type === "password";
+
+        passwordInput.type = isHidden ? "text" : "password";
+        toggleButton.textContent = isHidden ? "Hide" : "Show";
+        toggleButton.setAttribute("aria-pressed", String(isHidden));
+    });
+</script>
+
+{% endblock %}

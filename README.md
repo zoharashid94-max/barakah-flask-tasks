@@ -8,11 +8,11 @@ A fully functional, database-backed web application engineered during my backend
 
 The application successfully integrates 5 distinct development architectural blocks:
 
-*   **Task 1: Flask Infrastructure & Jinja2 Engineering** – Established dynamic backend routing, handled clean status rendering, and implemented structured template inheritance using a master base layout.
-*   **Task 2: Server-Side Form Handling & Request Parsing** – Engineered an input interface optimized to handle server-side HTTP `POST` requests, safely parsing client-side inputs.
-*   **Task 3: Relational SQLite Database Integration** – Automated transactional schema execution to dynamically insert, persist, and fetch contact data logs seamlessly.
-*   **Task 4: Session Control & User Authentication** – Restricted administrative dashboards using `Flask-Login` session management, securing specific database visualization interfaces.
-*   **Task 5: REST API Endpoint Architecture** – Engineered a scalable public backend API endpoint that dynamically queries underlying tables and serializes data rows into standard JSON arrays.
+*   **Task 1: Flask Infrastructure & Jinja2 Engineering** Established dynamic backend routing, handled clean status rendering, and implemented structured template inheritance using a master base layout.
+*   **Task 2: Server-Side Form Handling & Request Parsing** Engineered an input interface optimized to handle server-side HTTP `POST` requests, safely parsing client-side inputs.
+*   **Task 3: Relational SQLite Database Integration** Automated transactional schema execution to dynamically insert, persist, and fetch contact data logs seamlessly.
+*   **Task 4: Session Control & User Authentication** Restricted administrative dashboards using `Flask-Login` session management, securing specific database visualization interfaces.
+*   **Task 5: REST API Endpoint Architecture**  Engineered a scalable public backend API endpoint that dynamically queries underlying tables and serializes data rows into standard JSON arrays.
 
 ---
 
@@ -63,5 +63,5 @@ Follow these sequential steps to run this application workspace locally:
 ##  Secure Testing Profile Credentials
 
 To bypass authorization barriers and evaluate the protected Admin Dashboard Panel (Task 3 & 4), apply the following standard system check logs:
-*   **Username:** `zoha`
-*   **Password:** `scholarship2026`
+*   **Username:** `Admin`
+*   **Password:** `Password123`
